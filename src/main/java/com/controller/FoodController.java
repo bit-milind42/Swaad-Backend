@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.milind.model.Food;
 import com.milind.model.Restaurant;
 import com.milind.model.User;
-import com.response.CreateFoodRequest;
+import com.request.CreateFoodRequest;
 import com.service.FoodService;
 import com.service.RestaurantService;
 import com.service.UserService;

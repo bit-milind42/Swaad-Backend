@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.milind.model.Food;
 import com.milind.model.Restaurant;
 import com.repository.FoodRepository;
-import com.response.CreateFoodRequest;
+import com.request.CreateFoodRequest;
 
 @Service
 public class FoodServiceImp implements FoodService {

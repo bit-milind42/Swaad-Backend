@@ -5,7 +5,7 @@ import java.util.Locale.Category;
 
 import com.milind.model.Food;
 import com.milind.model.Restaurant;
-import com.response.CreateFoodRequest;
+import com.request.CreateFoodRequest;
 
 public interface FoodService {
     public  Food createFood(CreateFoodRequest req,Category category, Restaurant restaurant);
