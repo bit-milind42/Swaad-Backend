@@ -1,6 +1,7 @@
 package com.service;
+import java.lang.Class;
 
-import java.lang.classfile.ClassFile.Option;
+// import java.lang.classfile.ClassFile.Option;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class CartServiceImpl implements CartService{
         newCartItem.setTotalPrice(req.getQuanity()*food.getPrice());
 
         CartItem savedCartItem = cartItemRepository.save(newCartItem);
-        cart.getItems().add(savedCartItem);
+        cart.getItem().add(savedCartItem);
         return savedCartItem;
     }
 
@@ -62,7 +63,7 @@ public class CartServiceImpl implements CartService{
         CartItem item = cartItemOptional.get();
         item.setQuantity(quanity);
 // 5*100=500
-        item.setTotalPrice(item.getFood().getPrice()*quantity);
+        item.setTotalPrice(item.getFood().getPrice()*quanity);
 
         return cartItemRepository.save(item);
     }
@@ -78,7 +79,7 @@ public class CartServiceImpl implements CartService{
         }
 
         CartItem item=cartItemOptional.get();
-        cart.getItems().remove(item);
+        cart.getItem().remove(item);
         return cartRepository.save(cart);
     }
 
@@ -115,8 +116,14 @@ public class CartServiceImpl implements CartService{
     public Cart clearCart(Long userId)throws Exception{
         // User user=userService.findUserByJwtToken(userId);
         Cart cart=findCartByUserId(userId);
-        cart.getItems().clear();
+        cart.getItem().clear();
         return cartRepository.save(cart);
+    }
+
+    @Override
+    public Cart findByCustomerId(Long userId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByCustomerId'");
     }
 
 

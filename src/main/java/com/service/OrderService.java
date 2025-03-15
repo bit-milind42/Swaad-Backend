@@ -8,7 +8,7 @@ import com.request.OrderRequest;
 
 public interface OrderService {
 
-    public Order createOrder(OrderRequest order,User user);
+    public Order createOrder(OrderRequest order,User user) throws Exception;
 
     public Order updateOrder(Long orderId, String orderStatus) throws Exception;
 

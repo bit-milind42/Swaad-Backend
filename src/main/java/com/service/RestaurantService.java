@@ -53,4 +53,8 @@ public interface RestaurantService {
     Restaurant findRestaurantById(Long id) throws Exception;
 
     RestaurantDto addToFavorites(Long restaurantID, User user) throws Exception;
+
+    Restaurant updateRestaurantStatus(Long id) throws Exception;
+
+    Restaurant getRestaurantByUserId(Long id) throws Exception;
 }

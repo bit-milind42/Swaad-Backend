@@ -156,6 +156,7 @@ package com.service;
 import com.milind.dto.RestaurantDto;
 import com.milind.model.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -190,7 +191,7 @@ public class RestaurantServiceImp implements RestaurantService {
         restaurant.setDescription(req.getDescription());
         restaurant.setImages(req.getImages());
         restaurant.setName(req.getName());
-        restaurant.setOpeningHours(req.getOpeningHours());
+        restaurant.setOpeningHours(req.getOpningHours());
         restaurant.setRegistrationDate(LocalDateTime.now());
         restaurant.setOwner(user);
 

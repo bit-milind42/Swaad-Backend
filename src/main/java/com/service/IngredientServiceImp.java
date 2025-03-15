@@ -92,6 +92,10 @@
 // }
 
 
+
+
+
+
 package com.service;
 
 import java.util.List;
@@ -104,13 +108,13 @@ import com.milind.model.IngredientCategory;
 import com.milind.model.IngredientsItem;
 import com.milind.model.Restaurant;
 import com.repository.IngredientCategoryRepository;
-import com.repository.IngredientsItemRepository;
+import com.repository.IngredientItemRepository;
 
 @Service
 public class IngredientServiceImp implements IngredientsService {
 
     @Autowired
-    private IngredientsItemRepository ingredientsItemRepository;
+    private IngredientItemRepository ingredientsItemRepository;
 
     @Autowired
     private IngredientCategoryRepository ingredientCategoryRepository;
@@ -129,8 +133,8 @@ public class IngredientServiceImp implements IngredientsService {
         return ingredientCategoryRepository.save(category);
     }
 
-    @Override
-    public IngredientCategory findIngredientCategoryById(Long id) throws Exception {
+    
+    public IngredientCategory findIngredientCategoryById(Long id) throws Exception  {
         Optional<IngredientCategory> opt = ingredientCategoryRepository.findById(id);
 
         if (opt.isEmpty()) {
@@ -139,13 +143,13 @@ public class IngredientServiceImp implements IngredientsService {
         return opt.get();
     }
 
-    @Override
+   
     public List<IngredientCategory> findIngredientCategoryByRestaurantId(Long id) throws Exception {
         restaurantService.findRestaurantById(id);
         return ingredientCategoryRepository.findByRestaurantId(id);
     }
 
-    @Override
+   
     public IngredientsItem createIngredientItem(Long restaurantId, String ingredientName, Long categoryId) throws Exception {
         Restaurant restaurant = restaurantService.findRestaurantById(restaurantId);
         IngredientCategory category = findIngredientCategoryById(categoryId);
@@ -175,6 +179,25 @@ public class IngredientServiceImp implements IngredientsService {
         IngredientsItem ingredientsItem = optionalIngredientsItem.get();
         ingredientsItem.setInStock(!ingredientsItem.isInStock());
         return ingredientsItemRepository.save(ingredientsItem);
+    }
+
+    @Override
+    public IngredientCategory findingredientCategoryById(Long id) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findingredientCategoryById'");
+    }
+
+    @Override
+    public List<IngredientCategory> findingredientCategoryByRestaurantId(Long id) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findingredientCategoryByRestaurantId'");
+    }
+
+    @Override
+    public IngredientsItem createIngredientites(Long restaurantid, String ingredientName, Long categoryId)
+            throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createIngredientites'");
     }
 }
 

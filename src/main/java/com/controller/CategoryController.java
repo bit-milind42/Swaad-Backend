@@ -1,7 +1,7 @@
 package com.controller;
 
 import java.util.List;
-import java.util.Locale.Category;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.milind.model.Category;
 import com.milind.model.User;
 import com.service.CategoryService;
 import com.service.UserService;
@@ -31,13 +31,18 @@ public class CategoryController {
     @RequestHeader("Authorization") String jwt)throws Exception{
         User user=userService.findUserByJwtToken(jwt);
         Category createdCategory=categoryService.createCategory(category,getName(), user.getId());
-
-        return new ResponseEntity<>(createdCategory, HttpStatus.CREATED);
-
-
-    }
-
-    @PostMapping("/category/restaurant")
+        
+                return new ResponseEntity<>(createdCategory, HttpStatus.CREATED);
+        
+        
+            }
+        
+            private Long getName() {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'getName'");
+            }
+        
+            @PostMapping("/category/restaurant")
     public ResponseEntity<List<Category>> getRestaurantCategory(
     @RequestHeader("Authorization") String jwt)throws Exception{
         User user=userService.findUserByJwtToken(jwt);

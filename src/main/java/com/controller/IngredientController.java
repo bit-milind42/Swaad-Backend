@@ -39,7 +39,7 @@ public class IngredientController {
         @RequestBody IngredientRequest req
     ) throws Exception {
 
-        IngredientsItem item = ingredientsService.createIngredientItem(req.getRestaurantId(),req.getName(),req.getCategoryId());
+        IngredientsItem item = ingredientsService.createIngredientites(req.getRestaurantId(),req.getName(),req.getCategoryId());
         return new ResponseEntity<>(item, HttpStatus.CREATED);
     }
 

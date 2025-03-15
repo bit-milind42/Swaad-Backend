@@ -97,4 +97,16 @@ public class CategoryServiceImp implements CategoryService {
         }
         return optionalCategory.get();
     }
+
+   
+    public java.util.Locale.Category createCategory(java.util.Locale.Category category, Long name, Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createCategory'");
+    }
+
+    @Override
+    public Category createCategory(Category category, Long name, Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createCategory'");
+    }
 }
