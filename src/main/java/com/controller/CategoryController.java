@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -42,13 +44,14 @@ public class CategoryController {
                 throw new UnsupportedOperationException("Unimplemented method 'getName'");
             }
         
-            @PostMapping("/category/restaurant")
-    public ResponseEntity<List<Category>> getRestaurantCategory(
-    @RequestHeader("Authorization") String jwt)throws Exception{
-        User user=userService.findUserByJwtToken(jwt);
-        List<Category> Categories=categoryService.findCategoryByRestaurantId( user.getId());
+            @GetMapping("/category/restaurant/{id}")
+            public ResponseEntity<List<Category>> getRestaurantCategory(
+                @PathVariable Long id,
+                @RequestHeader("Authorization") String jwt)throws Exception{
+                User user=userService.findUserByJwtToken(jwt);
+                List<Category> Categories=categoryService.findCategoryByRestaurantId(id);
 
-        return new ResponseEntity<>(Categories, HttpStatus.CREATED);
+                return new ResponseEntity<>(Categories, HttpStatus.CREATED);
 
     }
 
