@@ -338,7 +338,7 @@ public class AppConfig {
             .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/signup", "/auth/signin").permitAll()  // Allow both auth endpoints
-                .requestMatchers("/api/admin/**").hasAnyAuthority("RESTAURANT_OWNER", "ADMIN") 
+                .requestMatchers("/api/admin/**").hasAnyAuthority("ROLE_RESTAURANT_OWNER", "ADMIN") 
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll()
             )

@@ -573,6 +573,7 @@ import com.milind.model.Restaurant;
 import com.milind.model.Category;
 import com.repository.FoodRepository;
 import com.request.CreateFoodRequest;
+import java.util.Date;
 
 @Service
 public class FoodServiceImp implements FoodService {
@@ -591,6 +592,8 @@ public class FoodServiceImp implements FoodService {
         food.setPrice(req.getPrice()); 
         food.setIngredients(req.getIngredients()); 
         food.setSeasonal(req.isSeasonal()); // Fixed the method name from isSeasional to isSeasonal
+        
+        food.setCreationDate(new Date());
         food.setVegetarian(req.isVegetarian());
 
         return foodRepository.save(food); 
