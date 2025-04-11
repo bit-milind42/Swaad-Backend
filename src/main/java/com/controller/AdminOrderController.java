@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,14 +40,14 @@ public class AdminOrderController {
             return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
-    @GetMapping("/order/{id}/{orderStatus}")
+    @PutMapping("/order/{id}/{orderStatus}")
     public ResponseEntity<Order> updateOrderStatus(
         
             @PathVariable Long id,
-            @RequestParam(required = false) String order_status,
+            @PathVariable String orderStatus,
             @RequestHeader("Authorization") String jwt) throws Exception{
             User user=userService.findUserByJwtToken(jwt);
-            Order orders=orderService.updateOrder(id,order_status);
+            Order orders=orderService.updateOrder(id,orderStatus);
             return new ResponseEntity<>(orders, HttpStatus.OK);
     }
     

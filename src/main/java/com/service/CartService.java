@@ -5,8 +5,6 @@ import com.request.AddCartItemRequest;
 
 public interface CartService {
 
-    // public CartItem addItemToCart(AddCartItemRequest req, String jwt) throws Exception;
-
     public Cart findByCustomerId(Long userId);
 
     public CartItem addItemToCart(AddCartItemRequest req, String jwt) throws Exception;

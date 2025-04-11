@@ -18,8 +18,10 @@ import com.milind.model.Order;
 import com.milind.model.User;
 import com.request.AddCartItemRequest;
 import com.request.OrderRequest;
+import com.response.PaymentResponse;
 import com.service.OrderService;
 import com.service.UserService;
+import com.service.PaymentService;
 
 @RestController
 @RequestMapping("/api")
@@ -28,14 +30,19 @@ public class OrderController {
     private OrderService orderService;
 
     @Autowired
+    private PaymentService paymentService;
+
+    @Autowired
     private UserService userService;
 
     @PostMapping("/order")
-    public ResponseEntity<Order> createOrder(@RequestBody OrderRequest req,
+    public ResponseEntity<PaymentResponse> createOrder(@RequestBody OrderRequest req,
         @RequestHeader("Authorization") String jwt) throws Exception {
             User user=userService.findUserByJwtToken(jwt);
-            Order order=orderService.createOrder(req, null);
-            return new ResponseEntity<>(order, HttpStatus.OK);
+            Order order = orderService.createOrder(req, user);
+
+            PaymentResponse res=paymentService.createPaymentLink(order);
+            return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
 

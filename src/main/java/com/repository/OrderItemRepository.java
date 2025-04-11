@@ -1,13 +1,3 @@
-// package com.repository;
-
-// import org.springframework.data.jpa.repository.JpaRepository;
-
-// import com.milind.model.OrderItem;
-
-// public class OrderItemRepository extends JpaRepository <OrderItem,Long>{
-    
-// }
- 
 
 package com.repository;
 

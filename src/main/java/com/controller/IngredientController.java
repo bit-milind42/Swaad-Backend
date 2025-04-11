@@ -35,13 +35,25 @@ public class IngredientController {
     }
 
     @PostMapping()
-    public ResponseEntity<IngredientsItem> createIngredientItem(
-        @RequestBody IngredientRequest req
-    ) throws Exception {
+    public ResponseEntity<?> createIngredientItem(@RequestBody IngredientRequest req) {
+    System.out.println("Incoming ingredient request:");
+    System.out.println("restaurantId = " + req.getRestaurantId());
+    System.out.println("ingredientName = " + req.getIngredientName());
+    System.out.println("categoryId = " + req.getCategoryId());
 
-        IngredientsItem item = ingredientsService.createIngredientites(req.getRestaurantId(),req.getName(),req.getCategoryId());
+    try {
+        IngredientsItem item = ingredientsService.createIngredientites(
+            req.getRestaurantId(),
+            req.getIngredientName(),
+            req.getCategoryId()
+        );
         return new ResponseEntity<>(item, HttpStatus.CREATED);
+    } catch (Exception e) {
+        e.printStackTrace();
+        return new ResponseEntity<>("Error: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    }
+
 
     @PutMapping("/{id}/stoke")
     public ResponseEntity<IngredientsItem> UpdateIngredientStock(
